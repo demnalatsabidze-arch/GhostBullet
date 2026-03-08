@@ -5,7 +5,7 @@
 
 **The Ultimate Tor Hidden Service Manager & Dark Net Intelligence Dashboard**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Docker](https://img.shields.io/badge/Docker-Ready-cyan.svg)](https://www.docker.com/)
 [![Tor](https://img.shields.io/badge/Tor-v3_Hidden_Services-indigo.svg)](https://www.torproject.org/)
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)]()
