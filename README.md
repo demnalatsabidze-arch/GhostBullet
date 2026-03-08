@@ -1,7 +1,7 @@
 <div align="center">
 
 # 👌🏻 Ghost Bullet 👌🏻
-<img width="1280" height="640" alt="Ghost Bullet Logo - Banner" src="https://github.com/user-attachments/assets/7c63dd75-4825-4630-8485-9af92fc7481d" />
+<img width="1280" height="640" alt="Ghost Bullet Logo - Banner v2" src="https://github.com/user-attachments/assets/ca8abecc-27c2-4b91-a96f-2ef1eae0115c" />
 
 **The Ultimate Tor Hidden Service Manager & Dark Net Intelligence Dashboard**
 
