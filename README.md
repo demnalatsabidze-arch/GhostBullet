@@ -1,6 +1,8 @@
 <div align="center">
 
-# �� Ghost Bullet
+# 👌🏻 Ghost Bullet 👌🏻
+<img width="1280" height="640" alt="Ghost Bullet Logo - Banner" src="https://github.com/user-attachments/assets/7c63dd75-4825-4630-8485-9af92fc7481d" />
+
 **The Ultimate Tor Hidden Service Manager & Dark Net Intelligence Dashboard**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
@@ -11,7 +13,7 @@
 
 *Deploy entirely self-hosted, secure `.onion` sites in seconds with automated multi-threading, dynamic Nginx routing, and integrated Vanity URL generation.*
 
-<img src="https://raw.githubusercontent.com/chadi0x/GhostBullet/main/ui/static/css/images/preview.png" alt="Ghost Bullet Dashboard Preview" onerror="this.style.display='none'">
+<img src="https://github.com/user-attachments/assets/b96c1be5-9837-4d9c-b25b-c3030297e8f2" alt="Ghost Bullet Dashboard Preview" onerror="this.style.display='none'">
 
 </div>
 
@@ -23,7 +25,7 @@
 
 Stop wrestling with `torrc` configurations, `chown` permissions, and broken symlinks. Ghost Bullet handles the invisible network layer so you can focus on building.
 
-## �� Features
+## 🕹️ Features
 
 - **Instant Deployment**: Go from a ZIP file to a live V3 `.onion` link in under 10 seconds.
 - **Advanced Vanity URLs**: Integrated `mkp224o` worker cluster automatically brute-forces custom `.onion` prefixes in the background.
@@ -42,7 +44,7 @@ Enhance your Ghost Bullet installation with advanced offensive and defensive int
 *   **🐛 Last Exploits**: Real-time scraping engine monitoring underground forums for zero-days, new exploits, and active malware trends.
 
 <div align="center">
-  <a href="https://github.com/chadi0x/GhostBullet">
+  <a href="https://pay.oxapay.com/15690646">
     <img src="https://img.shields.io/badge/👑_GET_THE_PREMIUM_VERSION_NOW-8A2BE2?style=for-the-badge&logo=github&logoColor=white&labelColor=1a1a1a" alt="Get Premium Version" />
   </a>
 </div>
