@@ -1,0 +1,79 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: ghost_bullet_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ghost}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bullet2026}
+      POSTGRES_DB: ${POSTGRES_DB:-ghost_bullet}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ghost} -d ${POSTGRES_DB:-ghost_bullet}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  ui:
+    build:
+      context: ./ui
+    container_name: ghost_bullet_ui
+    restart: unless-stopped
+    ports:
+      - "8008:5000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-ghost}:${POSTGRES_PASSWORD:-bullet2026}@db/${POSTGRES_DB:-ghost_bullet}
+      FLASK_ENV: production
+      SECRET_KEY: ${SECRET_KEY:-supersecret_ghost_bullet_key}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - tor_keys_vol:/tor_keys:ro
+      - sites_content:/sites_content
+
+  tor-manager:
+    build:
+      context: ./services/tor_manager
+    container_name: ghost_bullet_tor
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-ghost}:${POSTGRES_PASSWORD:-bullet2026}@db/${POSTGRES_DB:-ghost_bullet}
+      # This allows tor-manager to be on the same network as other containers if we want to route to them by container name
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - tor_keys_vol:/tor_keys
+      - tor_config_vol:/etc/tor
+      - sites_content:/sites_content
+
+  vanity-worker:
+    build:
+      context: ./services/vanity_worker
+    container_name: ghost_bullet_vanity
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-ghost}:${POSTGRES_PASSWORD:-bullet2026}@db/${POSTGRES_DB:-ghost_bullet}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - tor_keys_vol:/tor_keys
+
+  nginx:
+    image: nginx:alpine
+    container_name: ghost_bullet_nginx
+    restart: unless-stopped
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - sites_content:/usr/share/nginx/html:ro
+
+volumes:
+  db_data:
+  tor_keys_vol:
+  tor_config_vol:
+  sites_content:

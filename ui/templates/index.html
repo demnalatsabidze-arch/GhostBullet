@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Bullet Dashboard</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Orbitron for cyberpunk feel, Inter for readability -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body class="bg-[#09090b] text-gray-300 font-inter min-h-screen flex flex-col antialiased">
+
+    <!-- Top Navigation -->
+    <nav class="border-b border-zinc-800 bg-[#0c0c0e]/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3">
+                    <div class="glow-icon text-cyan-400">
+                        <i class="fa-solid fa-ghost text-2xl"></i>
+                    </div>
+                    <span
+                        class="font-orbitron font-bold text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">
+                        GHOST BULLET
+                    </span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="https://github.com/chadi0x" target="_blank"
+                        class="text-xs font-mono text-zinc-400 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                        <i class="fa-brands fa-github"></i> CHADI0X
+                    </a>
+                    <button onclick="openModal()" class="cyber-btn group">
+                        <span
+                            class="relative z-10 font-orbitron text-sm font-semibold tracking-wide flex items-center gap-2">
+                            <i class="fa-solid fa-plus transition-transform group-hover:rotate-90"></i>
+                            DEPLOY SITE
+                        </span>
+                    </button>
+                </div>
+            </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full relative">
+        <!-- Background Grid Effect -->
+        <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGRlZnM+PHBhdHRlcm4gaWQ9ImciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgNDBoNDBWMEgweiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0wIDQwaDQwVjBIOHoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFmMWYyOCIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2cpIi8+PC9zdmc+')] opacity-20 pointer-events-none -z-10">
+        </div>
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-transparent via-[#09090b]/80 to-[#09090b] pointer-events-none -z-10">
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="border-b border-zinc-800 mb-8">
+            <nav class="-mb-px flex space-x-8 overflow-x-auto" aria-label="Tabs">
+                <button onclick="switchTab('dashboard')" id="tab-dashboard"
+                    class="border-cyan-400 text-cyan-400 whitespace-nowrap py-4 px-1 border-b-2 font-orbitron font-medium text-sm transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-network-wired"></i> ACTIVE NODES
+                </button>
+                <button onclick="switchTab('scanner')" id="tab-scanner"
+                    class="border-transparent text-zinc-500 hover:text-zinc-300 hover:border-zinc-300 whitespace-nowrap py-4 px-1 border-b-2 font-orbitron font-medium text-sm transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-shield-virus"></i> VULNERABILITY SCANNER
+                </button>
+                <button onclick="switchTab('breach')" id="tab-breach"
+                    class="border-transparent text-zinc-500 hover:text-zinc-300 hover:border-zinc-300 whitespace-nowrap py-4 px-1 border-b-2 font-orbitron font-medium text-sm transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-database"></i> BREACH DATA
+                </button>
+                <button onclick="switchTab('validate')" id="tab-validate"
+                    class="border-transparent text-zinc-500 hover:text-zinc-300 hover:border-zinc-300 whitespace-nowrap py-4 px-1 border-b-2 font-orbitron font-medium text-sm transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-check-double"></i> VALIDATE SITES
+                </button>
+                <button onclick="switchTab('exploits')" id="tab-exploits"
+                    class="border-transparent text-zinc-500 hover:text-zinc-300 hover:border-zinc-300 whitespace-nowrap py-4 px-1 border-b-2 font-orbitron font-medium text-sm transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-bug"></i> LAST EXPLOITS
+                </button>
+            </nav>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div id="content-dashboard" class="tab-content block">
+            <div class="flex items-center justify-between mb-8">
+                <h1 class="text-3xl font-orbitron font-bold text-white tracking-wide flex items-center gap-3">
+                    <i class="fa-solid fa-network-wired text-cyan-400"></i>
+                    ACTIVE NODES
+                </h1>
+                <div
+                    class="text-xs font-mono text-zinc-500 bg-zinc-900/50 px-3 py-1 rounded border border-zinc-800 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    SYSTEM ONLINE
+                </div>
+            </div>
+
+            <!-- Sites List -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="sites-container">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Premium Feature Panels (Hidden by default) -->
+        <div id="content-scanner" class="tab-content hidden">
+            <div
+                class="border border-zinc-800 bg-[#121216]/80 backdrop-blur-sm rounded-lg p-12 text-center flex flex-col items-center justify-center">
+                <i class="fa-solid fa-shield-virus text-6xl text-zinc-700 mb-4 opacity-50"></i>
+                <h2 class="text-2xl font-orbitron font-bold text-white mb-2">Vulnerability Scanner For Tor</h2>
+                <p class="text-zinc-400 font-mono text-sm max-w-md mb-8">Scan remote Onion addresses for exposed CVEs,
+                    misconfigurations, and standard web vulnerabilities aggressively.</p>
+                <a href="https://github.com/chadi0x/GhostBullet" target="_blank"
+                    class="px-6 py-3 rounded bg-gradient-to-r from-cyan-500 to-fuchsia-600 text-white font-orbitron font-bold tracking-wider hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] transition-all">
+                    <i class="fa-solid fa-crown mr-2"></i> ONLY ON PREMIUM VERSION (BUY NOW)
+                </a>
+            </div>
+        </div>
+
+        <div id="content-breach" class="tab-content hidden">
+            <div
+                class="border border-zinc-800 bg-[#121216]/80 backdrop-blur-sm rounded-lg p-12 text-center flex flex-col items-center justify-center">
+                <i class="fa-solid fa-database text-6xl text-zinc-700 mb-4 opacity-50"></i>
+                <h2 class="text-2xl font-orbitron font-bold text-white mb-2">Breach Data On Dark Net</h2>
+                <p class="text-zinc-400 font-mono text-sm max-w-md mb-8">Search massive indexed archives of breached
+                    credentials, stolen data, and leaked databases natively from the dashboard.</p>
+                <a href="https://github.com/chadi0x/GhostBullet" target="_blank"
+                    class="px-6 py-3 rounded bg-gradient-to-r from-cyan-500 to-fuchsia-600 text-white font-orbitron font-bold tracking-wider hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] transition-all">
+                    <i class="fa-solid fa-crown mr-2"></i> ONLY ON PREMIUM VERSION (BUY NOW)
+                </a>
+            </div>
+        </div>
+
+        <div id="content-validate" class="tab-content hidden">
+            <div
+                class="border border-zinc-800 bg-[#121216]/80 backdrop-blur-sm rounded-lg p-12 text-center flex flex-col items-center justify-center">
+                <i class="fa-solid fa-check-double text-6xl text-zinc-700 mb-4 opacity-50"></i>
+                <h2 class="text-2xl font-orbitron font-bold text-white mb-2">Validate Sites</h2>
+                <p class="text-zinc-400 font-mono text-sm max-w-md mb-8">Automatically ping and verify the uptime,
+                    signature, and health of thousands of external Onion URLs simultaneously.</p>
+                <a href="https://github.com/chadi0x/GhostBullet" target="_blank"
+                    class="px-6 py-3 rounded bg-gradient-to-r from-cyan-500 to-fuchsia-600 text-white font-orbitron font-bold tracking-wider hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] transition-all">
+                    <i class="fa-solid fa-crown mr-2"></i> ONLY ON PREMIUM VERSION (BUY NOW)
+                </a>
+            </div>
+        </div>
+
+        <div id="content-exploits" class="tab-content hidden">
+            <div
+                class="border border-zinc-800 bg-[#121216]/80 backdrop-blur-sm rounded-lg p-12 text-center flex flex-col items-center justify-center">
+                <i class="fa-solid fa-bug text-6xl text-zinc-700 mb-4 opacity-50"></i>
+                <h2 class="text-2xl font-orbitron font-bold text-white mb-2">Last Exploits (Find What Dark Net Forums
+                    Talk About)</h2>
+                <p class="text-zinc-400 font-mono text-sm max-w-md mb-8">Real-time scraping engine monitoring
+                    underground forums for zero-days, new exploits, and active malware trends.</p>
+                <a href="https://github.com/chadi0x/GhostBullet" target="_blank"
+                    class="px-6 py-3 rounded bg-gradient-to-r from-cyan-500 to-fuchsia-600 text-white font-orbitron font-bold tracking-wider hover:shadow-[0_0_20px_rgba(217,70,239,0.4)] transition-all">
+                    <i class="fa-solid fa-crown mr-2"></i> ONLY ON PREMIUM VERSION (BUY NOW)
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create Site Modal -->
+    <div id="create-modal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden z-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="bg-[#121216] border border-zinc-800 rounded-lg shadow-[0_0_30px_rgba(34,211,238,0.15)] w-full max-w-md transform scale-95 transition-transform duration-300 relative overflow-hidden"
+            id="modal-content">
+            <!-- Neon top edge -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 to-fuchsia-500"></div>
+
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="font-orbitron text-xl font-bold text-white">INITIALIZE NEW NODE</h2>
+                    <button onclick="closeModal()" class="text-zinc-500 hover:text-white transition-colors">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <form id="create-site-form" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-orbitron tracking-wider text-cyan-400 mb-1">NODE DESIGNATION
+                            (NAME)</label>
+                        <input type="text" id="site-name" required
+                            class="cyber-input w-full bg-[#0a0a0c] border border-zinc-700 rounded px-4 py-2 text-white placeholder-zinc-600 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all font-mono text-sm"
+                            placeholder="e.g. Secure Comms">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-xs font-orbitron tracking-wider text-cyan-400 mb-2">HOSTING
+                            TYPE</label>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 text-sm cursor-pointer group">
+                                <input type="radio" name="host-type" value="builtin" checked
+                                    class="accent-cyan-400 cursor-pointer" onchange="toggleHostInputs()">
+                                <span class="group-hover:text-cyan-400 transition-colors">Built-in (Nginx)</span>
+                            </label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer group">
+                                <input type="radio" name="host-type" value="custom"
+                                    class="accent-cyan-400 cursor-pointer" onchange="toggleHostInputs()">
+                                <span class="group-hover:text-cyan-400 transition-colors">Custom Container/Host</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="custom-host-inputs" class="grid grid-cols-2 gap-4 hidden mb-4">
+                        <div>
+                            <label class="block text-xs font-orbitron tracking-wider text-cyan-400 mb-1">TARGET
+                                HOST</label>
+                            <input type="text" id="site-host"
+                                class="cyber-input w-full bg-[#0a0a0c] border border-zinc-700 rounded px-4 py-2 text-white placeholder-zinc-600 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all font-mono text-sm"
+                                placeholder="my_container">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-orbitron tracking-wider text-cyan-400 mb-1">TARGET
+                                PORT</label>
+                            <input type="number" id="site-port"
+                                class="cyber-input w-full bg-[#0a0a0c] border border-zinc-700 rounded px-4 py-2 text-white placeholder-zinc-600 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all font-mono text-sm"
+                                placeholder="80">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-orbitron tracking-wider text-fuchsia-400 mb-1">VANITY PREFIX
+                            <span class="text-zinc-500">(OPTIONAL, MAX 7 CHARS)</span></label>
+                        <input type="text" id="site-vanity" maxlength="7" pattern="[a-z2-7]+"
+                            class="cyber-input w-full bg-[#0a0a0c] border border-zinc-700 rounded px-4 py-2 text-white placeholder-zinc-600 focus:outline-none focus:border-fuchsia-400 focus:ring-1 focus:ring-fuchsia-400 transition-all font-mono text-sm"
+                            placeholder="ghost">
+                        <p class="text-[10px] text-zinc-500 mt-1 uppercase">Allowed: a-z, 2-7 (Base32). Longer prefixes
+                            take MUCH longer.</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-orbitron tracking-wider text-cyan-400 mb-1">NOTES</label>
+                        <textarea id="site-desc" rows="2"
+                            class="cyber-input w-full bg-[#0a0a0c] border border-zinc-700 rounded px-4 py-2 text-white placeholder-zinc-600 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all font-mono text-sm"></textarea>
+                    </div>
+
+                    <div class="pt-4 flex justify-end gap-3">
+                        <button type="button" onclick="closeModal()"
+                            class="px-4 py-2 rounded text-zinc-400 hover:text-white font-orbitron text-sm tracking-wide transition-colors">CANCEL</button>
+                        <button type="submit" class="cyber-btn-secondary group">
+                            <span
+                                class="relative z-10 font-orbitron text-sm font-semibold tracking-wide flex items-center gap-2">
+                                SUBMIT <i
+                                    class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Site Modal -->
+    <div id="upload-modal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden z-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="bg-[#121216] border border-zinc-800 rounded-lg shadow-[0_0_30px_rgba(34,211,238,0.15)] w-full max-w-md transform scale-95 transition-transform duration-300 relative overflow-hidden"
+            id="upload-content">
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-cyan-500"></div>
+
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="font-orbitron text-xl font-bold text-white">UPLOAD DEPLOYMENT (.ZIP)</h2>
+                    <button onclick="closeUploadModal()" class="text-zinc-500 hover:text-white transition-colors">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <form id="upload-site-form" class="space-y-4">
+                    <input type="hidden" id="upload-site-id">
+
+                    <div class="border-2 border-dashed border-zinc-700 rounded-lg p-8 text-center hover:border-cyan-400 transition-colors group cursor-pointer"
+                        onclick="document.getElementById('file-upload').click()">
+                        <i
+                            class="fa-solid fa-cloud-arrow-up text-4xl text-zinc-500 group-hover:text-cyan-400 transition-colors mb-3"></i>
+                        <p class="text-sm font-mono text-zinc-400 mb-1">Click to select .zip archive</p>
+                        <p class="text-[10px] text-zinc-600" id="file-name-display">Will overwrite existing files</p>
+                        <input type="file" id="file-upload" accept=".zip" class="hidden"
+                            onchange="document.getElementById('file-name-display').textContent = this.files[0] ? this.files[0].name : 'Will overwrite existing files'">
+                    </div>
+
+                    <div class="pt-4 flex justify-end gap-3">
+                        <button type="button" onclick="closeUploadModal()"
+                            class="px-4 py-2 rounded text-zinc-400 hover:text-white font-orbitron text-sm tracking-wide transition-colors">CANCEL</button>
+                        <button type="submit" class="cyber-btn-secondary group">
+                            <span
+                                class="relative z-10 font-orbitron text-sm font-semibold tracking-wide flex items-center gap-2">
+                                UPLOAD <i
+                                    class="fa-solid fa-arrow-up group-hover:-translate-y-1 transition-transform"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Files Modal -->
+    <div id="files-modal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden z-50 flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="bg-[#121216] border border-zinc-800 rounded-lg shadow-[0_0_30px_rgba(34,211,238,0.15)] w-full max-w-2xl transform scale-95 transition-transform duration-300 relative overflow-hidden flex flex-col max-h-[80vh]"
+            id="files-content">
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-400 to-cyan-500"></div>
+
+            <div class="p-6 border-b border-zinc-800 flex justify-between items-center shrink-0">
+                <h2 class="font-orbitron text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-folder-open text-indigo-400"></i> SITE FILES
+                </h2>
+                <button onclick="closeFilesModal()" class="text-zinc-500 hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto grow">
+                <input type="hidden" id="manage-site-id">
+
+                <table class="w-full text-left font-mono text-sm text-zinc-400">
+                    <thead class="text-xs uppercase text-zinc-500 border-b border-zinc-800">
+                        <tr>
+                            <th scope="col" class="px-3 py-3 font-normal">Filename</th>
+                            <th scope="col" class="px-3 py-3 font-normal text-right">Size</th>
+                            <th scope="col" class="px-3 py-3 font-normal text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="files-list-body" class="divide-y divide-zinc-800/50">
+                        <!-- Filled by JS -->
+                    </tbody>
+                </table>
+                <div id="files-loading" class="py-8 text-center text-zinc-600 hidden">
+                    <i class="fa-solid fa-spinner fa-spin text-2xl mb-2"></i>
+                    <p class="text-xs font-orbitron tracking-wider">SCANNING DIRECTORY</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template for Site Card -->
+    <template id="site-card-template">
+        <div
+            class="site-card bg-[#121216]/80 backdrop-blur-sm border border-zinc-800 rounded-lg p-5 flex flex-col relative overflow-hidden group hover:border-zinc-600 transition-all duration-300">
+            <!-- Glow effect on hover -->
+            <div
+                class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-fuchsia-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+            </div>
+
+            <div class="flex justify-between items-start mb-4 relative z-10">
+                <div>
+                    <h3 class="font-orbitron font-bold text-lg text-white site-name tracking-wider"></h3>
+                    <p class="text-xs text-zinc-500 font-mono mt-1 target-info"></p>
+                </div>
+                <!-- Status indicator -->
+                <div
+                    class="status-badge px-2 py-1 rounded text-[10px] font-orbitron tracking-widest border border-zinc-700 flex items-center gap-1.5 uppercase">
+                    <!-- filled by JS -->
+                </div>
+            </div>
+
+            <div class="flex-grow space-y-4 relative z-10">
+                <div class="bg-[#0a0a0c] rounded border border-zinc-800 p-3 relative group/onion">
+                    <div class="text-[10px] font-orbitron text-zinc-500 mb-1 uppercase">Onion Address</div>
+                    <div class="flex items-center justify-between">
+                        <div class="font-mono text-xs text-cyan-300 truncate onion-url select-all cursor-text pr-2">
+                            Pending deployment...
+                        </div>
+                        <button class="text-zinc-500 hover:text-cyan-400 transition-colors copy-btn hidden"
+                            title="Copy Address">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 text-xs font-mono text-zinc-400">
+                    <div>
+                        <span class="text-zinc-600">VANITY:</span> <span class="vanity-val">NONE</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-zinc-600">CREATED:</span> <span class="created-val"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="mt-5 pt-4 border-t border-zinc-800/50 flex justify-between relative z-10 gap-2">
+                <div class="flex gap-2 flex-wrap">
+                    <button
+                        class="deploy-btn px-3 py-1.5 rounded bg-cyan-950/30 text-cyan-400 border border-cyan-900/50 hover:bg-cyan-900/40 hover:border-cyan-400/50 transition-all font-orbitron text-[10px] tracking-wider flex items-center gap-1">
+                        <i class="fa-solid fa-play"></i> DEPLOY
+                    </button>
+                    <button
+                        class="upload-btn px-3 py-1.5 rounded bg-emerald-950/30 text-emerald-400 border border-emerald-900/50 hover:bg-emerald-900/40 hover:border-emerald-400/50 transition-all font-orbitron text-[10px] tracking-wider flex items-center gap-1 hidden"
+                        title="Initial content upload">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> UPLOAD
+                    </button>
+                    <button
+                        class="update-btn px-3 py-1.5 rounded bg-blue-950/30 text-blue-400 border border-blue-900/50 hover:bg-blue-900/40 hover:border-blue-400/50 transition-all font-orbitron text-[10px] tracking-wider flex items-center gap-1 hidden"
+                        title="Overwrite full site files">
+                        <i class="fa-solid fa-file-import"></i> REWRITE FILES
+                    </button>
+                    <button
+                        class="manage-btn px-3 py-1.5 rounded bg-indigo-950/30 text-indigo-400 border border-indigo-900/50 hover:bg-indigo-900/40 hover:border-indigo-400/50 transition-all font-orbitron text-[10px] tracking-wider flex items-center gap-1 hidden">
+                        <i class="fa-solid fa-folder-open"></i> MANAGE FILES
+                    </button>
+                    <button
+                        class="check-pkg-btn px-3 py-1.5 rounded bg-yellow-950/30 text-yellow-500 border border-yellow-900/50 hover:bg-yellow-900/40 hover:border-yellow-500/50 transition-all font-orbitron text-[10px] tracking-wider flex items-center gap-1 hidden">
+                        <i class="fa-solid fa-search"></i> CHECK UPDATES
+                    </button>
+                    <button
+                        class="stop-btn px-3 py-1.5 rounded bg-rose-950/30 text-rose-400 border border-rose-900/50 hover:bg-rose-900/40 hover:border-rose-400/50 transition-all font-orbitron text-[10px] tracking-wider flex items-center gap-1 hidden">
+                        <i class="fa-solid fa-stop"></i> STOP
+                    </button>
+                    <button
+                        class="regen-btn px-3 py-1.5 rounded bg-fuchsia-950/30 text-fuchsia-400 border border-fuchsia-900/50 hover:bg-fuchsia-900/40 hover:border-fuchsia-400/50 transition-all font-orbitron text-[10px] tracking-wider flex items-center gap-1 hidden">
+                        <i class="fa-solid fa-rotate-right"></i> REGEN
+                    </button>
+                </div>
+                <button class="delete-btn px-3 py-1.5 rounded text-zinc-500 hover:text-rose-500 transition-colors">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <div
+            class="bg-[#1a1a24] border border-cyan-900/50 text-white px-4 py-3 rounded shadow-lg flex items-center gap-3 font-mono text-sm">
+            <i class="fa-solid fa-circle-info text-cyan-400"></i>
+            <span id="toast-msg">Notification</span>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>
