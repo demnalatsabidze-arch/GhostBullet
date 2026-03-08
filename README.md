@@ -95,6 +95,11 @@ Click the blue **REWRITE FILES** button to completely replace an existing node w
 
 ---
 
+## 🛠️ Custom Projects & Services
+
+Our group actively builds **100+ projects** targeting multi-service architectures and dark net integrations. Most of our advanced, large-scale projects are not free.
+
+If you need a specific custom project, tailored cybersecurity tool, or specialized infrastructure, reach out to me directly on Telegram: **[@hisoka0morow](https://t.me/hisoka0morow)**.
 ## ⚠️ Disclaimer
 
 Ghost Bullet is provided strictly for educational purposes, security research, and legitimate privacy preservation. **Tor is a privacy tool, not a criminal one.** 
